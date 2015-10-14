@@ -12,6 +12,7 @@
 	 
 	$URL="http://open.weather.com.cn/data/?areaid=".$areaid."&type=".$type."&date=".$date."&appid=".$appid_six."&key=".urlencode($key);
 	echo $URL;
+	echo 'hello';
 	 
 	//$string=file_get_contents($URL);
 	 
