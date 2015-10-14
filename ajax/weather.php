@@ -4,7 +4,7 @@
 	$appid='75988d93774b5659';
 	$appid_six=substr($appid,0,6);
 	$areaid = '101010100';  
-	$type='forecast_v';
+	$type='forecast_f';
 	$date=date("YmdHi");
 	$public_key="http://open.weather.com.cn/data/?areaid=".$areaid."&type=".$type."&date=".$date."&appid=".$appid;
 	 
