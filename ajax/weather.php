@@ -11,10 +11,10 @@
 	$key = base64_encode(hash_hmac('sha1',$public_key,$private_key,TRUE));
 	 
 	$URL="http://open.weather.com.cn/data/?areaid=".$areaid."&type=".$type."&date=".$date."&appid=".$appid_six."&key=".urlencode($key);
-	echo $URL."<br /-->";
+	echo $URL;
 	 
-	$string=file_get_contents($URL);
+	//$string=file_get_contents($URL);
 	 
-	echo $string;
+	//echo $string;
  
 ?>
