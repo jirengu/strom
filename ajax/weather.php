@@ -3,7 +3,7 @@
 //$ip = getIp();
 //echo $ip;
 //getWeather2();
-getCity();
+echo getCity();
 
 function getWeather()
 {
