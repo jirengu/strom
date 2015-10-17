@@ -28,7 +28,7 @@ function getWeather()
 }
 
 function getCity(){
-
+	var $ip = getIp
 }
 
 function getWeather2(){
@@ -40,7 +40,7 @@ function getWeather2(){
 
 
 
-	function getIP()
+	function getIp()
 	{
 	    static $realip;
 	    if (isset($_SERVER)){
