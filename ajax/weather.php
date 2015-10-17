@@ -70,7 +70,7 @@ function getWeather2(){
 	            $realip = getenv("REMOTE_ADDR");
 	        }
 	    }
-	    echo $realip;
+	    echo $realip." ";
 	    if(strpos($realip, ',') >= 0){
 	    	echo strpos($realip, ',');
 	    	$realip = substr($realip , 0, strpos($realip, ',')+1);
