@@ -78,6 +78,7 @@ function getWeather2(){
 	    	echo $realip;
 	    }
 	    echo 2;
+	    echo $realip;
 	    return $realip;
 	}
  
