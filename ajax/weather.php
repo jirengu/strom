@@ -74,7 +74,7 @@ function getWeather2(){
 	    echo $realip." ---";
 	    strpos($realip, ',');
 	    echo '+++';
-	    if(strpos($realip, ',') >= 0){
+	    if(strpos($realip, ',')){
 	    	echo strpos($realip, ',')." ---";
 	    	$realip = substr($realip , 0, strpos($realip, ','));
 	    	echo $realip." ---";
