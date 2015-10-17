@@ -55,6 +55,7 @@ function getIp()
     if(strpos($realip, ',')){
     	$realip = substr($realip , 0, strpos($realip, ','));
     }
+    echo $realip;
     return $realip;
 }
  
