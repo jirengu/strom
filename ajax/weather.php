@@ -39,6 +39,7 @@ function getWeather()
 	            echo 2;
 	        } else if (isset($_SERVER["HTTP_CLIENT_IP"])) {
 	            $realip = $_SERVER["HTTP_CLIENT_IP"];
+	            echo 3;
 	        } else {
 	            $realip = $_SERVER["REMOTE_ADDR"];
 	        }
