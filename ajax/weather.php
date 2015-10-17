@@ -32,7 +32,7 @@ function getCity(){
 }
 
 function getWeather2(){
-	$city = '杭州市区';
+	$city = '杭州市';
 	$uri = "http://api.map.baidu.com/telematics/v3/weather?location=$city&output=json&ak=A20cb515b0fa284cb99c36956c06e737";
 	$str = file_get_contents(($uri));
 	echo $str;
