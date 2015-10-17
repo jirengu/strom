@@ -37,7 +37,7 @@ function getCity(){
 	if( $cityArr->{'status'} == 0 ){
 		echo $cityArr->{'content'}->{'address_detail'}->{'city'};
 	}else{
-		echo 0;
+		echo '';
 	};
 }
 
