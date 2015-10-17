@@ -1,6 +1,10 @@
 <?php
 
+$weather = getWeather()
 
+if($_GET['callback']){
+
+}
 
 function getCity(){
 	$ip = getIp();
@@ -19,7 +23,7 @@ function getWeather(){
 	$city = getCity();
 	$uri = "http://api.map.baidu.com/telematics/v3/weather?location=$city&output=json&ak=A20cb515b0fa284cb99c36956c06e737";
 	$str = file_get_contents(($uri));
-	echo $str;
+	return $str;
 }
 
 
