@@ -34,7 +34,9 @@ function getCity(){
 	$str = file_get_contents($uri);
 	//echo $str;
 	$cityArr = json_decode($str);
-	echo $cityArr->{'status'};
+	if( $cityArr->{'status'} == 0 ){
+		echo $cityArr->{'content'}->{'address_detail'}->{'city'};
+	};
 }
 
 function getWeather2(){
