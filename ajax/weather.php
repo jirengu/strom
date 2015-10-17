@@ -24,7 +24,6 @@ function getCity(){
 
 function getWeather(){
 	$city = getCity();
-	echo $city;
 	$uri = "http://api.map.baidu.com/telematics/v3/weather?location=$city&output=json&ak=A20cb515b0fa284cb99c36956c06e737";
 	$str = file_get_contents(($uri));
 	return $str;
@@ -35,7 +34,6 @@ function getWeather(){
 function getIp()
 {
     static $realip;
-    print_r($_SERVER);
     if (isset($_SERVER)){
         if (isset($_SERVER["HTTP_X_FORWARDED_FOR"])){
             $realip = $_SERVER["HTTP_X_FORWARDED_FOR"];
@@ -57,7 +55,6 @@ function getIp()
     if(strpos($realip, ',')){
     	$realip = substr($realip , 0, strpos($realip, ','));
     }
-    echo $realip;
     return $realip;
 }
  
