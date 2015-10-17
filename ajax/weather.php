@@ -1,9 +1,12 @@
 <?php
 
-$weather = getWeather()
+$weather = getWeather();
 
 if($_GET['callback']){
-
+	$cb = $_GET['callback'];
+	echo "$cb&&$cb($weather)";
+}else{
+	echo $weather;
 }
 
 function getCity(){
