@@ -1,4 +1,7 @@
 <?php
+
+function getWeather()
+{
 	date_default_timezone_set('PRC');
 	set_time_limit(0);
 	$private_key = '1af25d_SmartWeatherAPI_575592d';
@@ -17,5 +20,33 @@
 	$string=file_get_contents($URL);
 	 
 	echo $string;
+
+}
+
+
+
+
+	function getIP()
+	{
+	    static $realip;
+	    if (isset($_SERVER)){
+	        if (isset($_SERVER["HTTP_X_FORWARDED_FOR"])){
+	            $realip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+	        } else if (isset($_SERVER["HTTP_CLIENT_IP"])) {
+	            $realip = $_SERVER["HTTP_CLIENT_IP"];
+	        } else {
+	            $realip = $_SERVER["REMOTE_ADDR"];
+	        }
+	    } else {
+	        if (getenv("HTTP_X_FORWARDED_FOR")){
+	            $realip = getenv("HTTP_X_FORWARDED_FOR");
+	        } else if (getenv("HTTP_CLIENT_IP")) {
+	            $realip = getenv("HTTP_CLIENT_IP");
+	        } else {
+	            $realip = getenv("REMOTE_ADDR");
+	        } www.111cn.net
+	    }
+	    return $realip;
+	}
  
 ?>
