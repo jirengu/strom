@@ -33,6 +33,7 @@ function getWeather()
 	{
 	    static $realip;
 	    if (isset($_SERVER)){
+	    	echo 1;
 	        if (isset($_SERVER["HTTP_X_FORWARDED_FOR"])){
 	            $realip = $_SERVER["HTTP_X_FORWARDED_FOR"];
 	        } else if (isset($_SERVER["HTTP_CLIENT_IP"])) {
