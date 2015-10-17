@@ -29,18 +29,30 @@ function getWeather()
 
 
 
-function getIp(){    
-	if (getenv("HTTP_CLIENT_IP") && strcasecmp(getenv("HTTP_CLIENT_IP"), "unknown"))    
-	$ip = getenv("HTTP_CLIENT_IP");    
-	else if (getenv("HTTP_X_FORWARDED_FOR") && strcasecmp(getenv("HTTP_X_FORWARDED_FOR"), "unknown"))    
-	$ip = getenv("HTTP_X_FORWARDED_FOR");    
-	else if (getenv("REMOTE_ADDR") && strcasecmp(getenv("REMOTE_ADDR"), "unknown"))    
-	$ip = getenv("REMOTE_ADDR");    
-	else if (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] && strcasecmp($_SERVER['REMOTE_ADDR'], "unknown"))    
-	$ip = $_SERVER['REMOTE_ADDR'];    
-	else 
-	$ip = "unknow";    
-	return($ip);    
-}
+	function getIP()
+	{
+	    static $realip;
+	    if (isset($_SERVER)){
+	    	echo 1;
+	        if (isset($_SERVER["HTTP_X_FORWARDED_FOR"])){
+	            $realip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+	            echo $realip;
+	        } else if (isset($_SERVER["HTTP_CLIENT_IP"])) {
+	            $realip = $_SERVER["HTTP_CLIENT_IP"];
+	            echo 3;
+	        } else {
+	            $realip = $_SERVER["REMOTE_ADDR"];
+	        }
+	    } else {
+	        if (getenv("HTTP_X_FORWARDED_FOR")){
+	            $realip = getenv("HTTP_X_FORWARDED_FOR");
+	        } else if (getenv("HTTP_CLIENT_IP")) {
+	            $realip = getenv("HTTP_CLIENT_IP");
+	        } else {
+	            $realip = getenv("REMOTE_ADDR");
+	        }
+	    }
+	    return $realip;
+	}
  
 ?>
