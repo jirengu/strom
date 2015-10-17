@@ -35,9 +35,9 @@ function getCity(){
 	//echo $str;
 	$cityArr = json_decode($str);
 	if( $cityArr->{'status'} == 0 ){
-		echo $cityArr->{'content'}->{'address_detail'}->{'city'};
+		return $cityArr->{'content'}->{'address_detail'}->{'city'};
 	}else{
-		echo '';
+		return '';
 	};
 }
 
