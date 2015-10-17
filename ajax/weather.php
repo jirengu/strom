@@ -1,7 +1,7 @@
 <?php
 
 $ip = getIp();
-echo $ip;
+//echo $ip;
 //getWeather2();
 //getCity();
 
