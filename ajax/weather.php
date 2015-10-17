@@ -1,5 +1,8 @@
 <?php
 
+$ip = getIp();
+echo $ip;
+
 function getWeather()
 {
 	date_default_timezone_set('PRC');
