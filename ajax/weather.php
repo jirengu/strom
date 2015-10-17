@@ -44,7 +44,7 @@ function getWeather()
 	            $realip = getenv("HTTP_CLIENT_IP");
 	        } else {
 	            $realip = getenv("REMOTE_ADDR");
-	        } www.111cn.net
+	        }
 	    }
 	    return $realip;
 	}
