@@ -29,7 +29,7 @@ function getWeather()
 }
 
 function getCity(){
-	$ip = '125.119.82.211';
+	$ip = getIp();
 	$uri = "http://api.map.baidu.com/location/ip?ak=A20cb515b0fa284cb99c36956c06e737&ip=$ip&coor=bd09ll";
 	$str = file_get_contents($uri);
 	//echo $str;
