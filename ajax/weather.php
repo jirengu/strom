@@ -1,4 +1,5 @@
 <?php
+	date_default_timezone_set('PRC');
 	set_time_limit(0);
 	$private_key = '1af25d_SmartWeatherAPI_575592d';
 	$appid='75988d93774b5659';
