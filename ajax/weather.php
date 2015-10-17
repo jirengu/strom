@@ -34,7 +34,7 @@ function getCity(){
 	$str = file_get_contents($uri);
 	echo $str;
 	$cityArr = json_decode($str);
-	dump($city) ;
+	dump($cityArr) ;
 }
 
 function getWeather2(){
