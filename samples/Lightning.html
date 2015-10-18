@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://www.random.nu/labs/workspace/html/lightning/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Lightning</title>
+    <script type="text/javascript" src="./Lightning_files/jquery.js"></script>
+    <script type="text/javascript" src="./Lightning_files/Point.js"></script>
+    <script type="text/javascript" src="./Lightning_files/Segment.js"></script>
+    <script type="text/javascript" src="./Lightning_files/LightningBolt.js"></script>
+</head>
+
+<body bgcolor="#101010" style="margin:0px;overflow:hidden;">
+
+    <!--<canvas id="canvas" width="960" height="600"></canvas>-->
+    <div id="container" style="width:960px;height:600px;background-color:#000000;position:absolute;left:50%;top:50%;margin-left:-480px;margin-top:-300px;">
+        <canvas id="canvas" width="960" height="600" style="background-color: #000000;"></canvas>
+    </div>
+
+    <script>
+
+        $(document).ready(init);
+
+        var context,
+            width,
+            height,
+            bolt,
+            mouseX = 0,
+            mouseY = 0,
+            showLightning = false;
+
+        function init()
+        {
+            context = $('#canvas')[0].getContext('2d');
+            width = $('#canvas')[0].width;
+            height = $('#canvas')[0].height;
+
+            bolt = new LightningBolt(context,
+                                     {x: Math.random() * 960, y: 0},
+                                     {x: Math.random() * 960, y: 600},
+                                     255, 1);
+
+            $(document).mousedown(function(e) {
+                var offset = $('#container').offset();
+                mouseX = e.pageX - offset.left;
+                mouseY = e.pageY - offset.top;
+                bolt.setStart(Math.random() * width, 0);
+                bolt.setEnd(mouseX, mouseY);
+                bolt.redraw(0.3);
+                window.setTimeout('bolt.render(1)', 100);
+            });
+
+            render();
+        }
+        
+        function render() {
+            context.fillStyle = 'rgba(0, 0, 0, 0.02)';
+            context.fillRect(0, 0, 960, 600);
+            requestAnimFrame(render);
+        }
+        
+        window.requestAnimFrame = (function() {
+            return  window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                function(/* function */ callback, /* DOMElement */ element) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
+        })();
+    </script>
+
+
+
+</body></html>
