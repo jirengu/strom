@@ -21,6 +21,14 @@
 		return Math.floor( min + Math.random()*(max-min) );
 	}
 
+	function getRandArr (min, max ,len){
+		var arr = [];
+		for(var i = 0; i < len; i++ ){
+			arr.push(rand(min, max));
+		}
+		return arr;
+	}
+
 </script>
 
 
