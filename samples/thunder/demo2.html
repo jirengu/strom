@@ -95,12 +95,22 @@ function Segment() {
 
 		}
 
+		//创建canvas画布
+		function createContent (){
+
+		}
+
+
+
 		return {
 			start: start
 		}
 	})();
 
-	ThunderWeather.start('fast');  //slow normal  fast
+	ThunderWeather.start({
+		type: 'normal',
+		sound: true
+	});  //slow normal  fast
 
 
 </script>
