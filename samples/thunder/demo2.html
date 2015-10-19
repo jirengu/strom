@@ -91,13 +91,24 @@ function Segment() {
 	 */
 	var ThunderWeather = (function(){
 
+		var content,
+			width = $(window).height(),
+			height = $(window.width();
+
 		function start( type ){
 
 		}
 
 		//创建canvas画布
 		function createContent (){
-
+			if($('canvas[data-thunder]').length === 0){
+				var $canvas = $('canvas');
+				$canvas.width(width);
+				$canvas.height(height);
+				$canvas.attr('data-thunder', 'thunder');
+				$("body").append($canvas);
+			}
+			context = $('canvas[data-thunder]')[0].getContext('2d');
 		}
 
 
