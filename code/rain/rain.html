@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/util.js"></script>
+    <style>
+        body {
+            background: black;
+        }
+    </style>
+</head>
+<body>
+<div class="drop"></div>
+
+<script>
+
+    function Drop(opts) {
+        this.startPoi = {x: 1000, y: -40};
+        this.endPoi = {x: 0, y: 1000};
+        this.winH = window.innerHeight + 180;
+        this.winW = window.innerWidth;
+        this.defaultConfig = {
+            x: 100,
+            offset: 30,
+            freq: 800,
+            during: 50,
+            offset: 20,
+            onOver: function(){}
+        };
+        this.config = extend({}, this.defaultConfig, opts);
+        this.init();
+
+    }
+    Drop.prototype = {
+        init: function () {
+            var me = this;
+            this.createRain();
+            setTimeout(function(){
+                me.rain();
+            }, rand(0, 4000));
+
+        },
+        setStartPoi: function (x, y) {
+            this.startPoi.x = x;
+            this.startPoi.y = y;
+        },
+        setEndPoi: function (x, y) {
+            this.endPoi.x = x;
+            this.endPoi.y = y;
+        },
+        createRain: function () {
+            var ct;
+            if (!$('.rain-ct')) {
+                ct = document.createElement('div');
+                ct.addClass('rain-ct');
+                document.body.appendChild(ct);
+            } else{
+                ct = $('.rain-ct');
+            }
+            var elem = document.createElement('div');
+            elem.addClass('rain');
+            this.elem = elem;
+            this.setBg();
+            ct.appendChild(elem);
+
+        },
+        setBg: function (scale) {
+            var zoom = scale || 0.5+Math.random()*4;
+            var bg = './images/drop.png';
+            this.elem.css({
+                position: 'absolute',
+                width: '32px',
+                height: '32px',
+                background: 'url(' + bg + ')' + ' 0 0 no-repeat',
+                transform: 'scale(' + zoom + ')'
+            });
+        },
+
+        dropDown: function (opts) {
+            var me = this;
+            var config = extend({}, this.config, opts);
+
+            var rain = this.elem, winH = this.winH, startPoi = this.startPoi, start = 0, x = rand(0, this.winW);
+            //var rand = this.rand(0, offset);
+            var _run = function () {
+                start++;
+                var top = Math.tween.Quad.easeIn(start, startPoi.y, winH, config.during);
+                var left = Math.tween.Linear(start, x, 0-config.offset, config.during);
+                rain.css({
+                    top: top + 'px',
+                    left: left + 'px'
+                });
+                if (start < config.during) {
+                    requestAnimationFrame(_run);
+                } else {
+                    config.onOver.call(me);
+                }
+            };
+            _run();
+        },
+
+        rain: function(){
+            var me = this;
+            this.clock = setTimeout(function(){
+                me.dropDown({onOver: me.rain})
+            }, me.config.freq);
+        },
+
+
+
+
+    };
+
+    var dropPois = randArr(0, 1000, 50);
+    console.log(dropPois);
+    dropPois.forEach(function(x){
+        console.log(x);
+        new Drop();
+    })
+</script>
+</body>
+</html>
