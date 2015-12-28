@@ -1,9 +1,6 @@
 # 5班项目- strom
-[demo地址1](http://jrgapp.sinaapp.com/)
 
-[demo地址2](http://strom.coding.io/)
 
-[项目地址](https://coding.net/u/jirengu/p/Strom/git)
 ## 1.项目背景
 
 
